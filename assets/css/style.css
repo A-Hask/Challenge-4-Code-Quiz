@@ -1,0 +1,19 @@
+body {
+    text-align: center;
+    background-color: black;
+    color:rgb(92, 10, 10);
+}
+
+.highScores {
+    text-align: left;
+}
+
+.clock {
+    text-align: right;
+}
+
+.button {
+    background-color: rgb(92, 10, 10);
+    color:black;
+    font-weight: bold;
+}
