@@ -1,19 +1,21 @@
+* {
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
     text-align: center;
     background-color: black;
-    color:rgb(92, 10, 10);
+    color:rgb(151, 19, 19);
 }
 
-.highScores {
-    text-align: left;
+header {
+    display: block;
 }
 
-.clock {
-    text-align: right;
-}
-
-.button {
-    background-color: rgb(92, 10, 10);
+/*This section styles the start button and highscore button*/
+.button-start,
+.button-highscores {
+    background-color: rgb(151, 19, 19);
     color:black;
     font-weight: bold;
 }
