@@ -1,21 +1,46 @@
+:root {
+    --primary-color: rgb(151,16,16);
+    --secondary-color: black;
+}
+
 * {
 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: bold;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    color: var(--secondary-color);
 }
 
 body {
+    background-image: url("graveyard.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     text-align: center;
-    background-color: black;
-    color:rgb(151, 19, 19);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 header {
     display: block;
 }
 
+h1,
+h2 {
+    /*this code gives the text an outline
+    to help it stand out against the background, making it easier to read*/
+    /* text-shadow: 2px 2px black; */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--secondary-color);
+}
+
 /*This section styles the start button and highscore button*/
 .button-start,
-.button-highscores {
-    background-color: rgb(151, 19, 19);
-    color:black;
-    font-weight: bold;
+.button-high-scores {
+    background-color: var(--primary-color);
+    color:var(--secondary-color);
 }

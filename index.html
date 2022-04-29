@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>The Deadly Coding Challenge!</title>
+    <title>THE DEADLY CODING QUIZ CHALLENGE!</title>
 </head>
 <header>
-    <button class="button-highscores" id="highscores">View High Scores</button>
-    <p class="clock" id="timer">You have</p>
-    <p class="clockparttwo" id="timerparttwo">seconds left.</p>
+    <button class="button-high-scores" id="high-scores"><a href="./highscores.html" id="high-score-page">View High Scores</a></button>
+    <p class="clock" id="timer"> </p>
 </header>
+
 <body>
-    <h1>Welcome to the Deadly Coding Quiz Challenge!</h1>
-    <h2>Test your coding knowledge!
-        <br/>
-        Your goal: Survive as long as possible by answering as many coding questions as you can.
-        <br/>
-        But answer carefully...
-        <br/> because each wrong answer will reduce your time by 10 seconds!
-    </h2>
-    <button class="button-start" id="start">START THE QUIZ!</button>
-<script src="./assets/js/script.js"></script>
+    <section id="welcome-page">
+        <h1>Welcome to the DEADLY CODING QUIZ CHALLENGE!</h1>
+        <h2>Test your coding knowledge!
+            <br>
+            Your goal: Survive as long as possible by answering as many coding questions as you can.
+            <br>
+            But answer carefully...
+            <br> because each wrong answer will reduce your time by 10 seconds!
+        </h2>
+        <button class="button-start" id="start">START THE QUIZ!</button>
+    </section>
+    <section id="quiz-zone">
+        <p id="current-score"> </p>
+        <ul id="quiz-questions"> </ul>
+    </section>
+    <section class="quiz-end">
+        <input type="text" placeholder="initials" >Enter your initials here!
+    </section>
+    <script src="./assets/js/script.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+
 </body>
 
 </html>
