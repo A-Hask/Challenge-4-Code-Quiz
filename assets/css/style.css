@@ -27,22 +27,32 @@ a:active {
     color: var(--primary-color);
 }
 
+/* .quiz {
+} */
+
 header {
     display: block;
 }
 
+li:hover {
+    cursor: pointer;
+}
+
 h1,
-h2 {
+h2,
+.input {
     /*this code gives the text an outline
     to help it stand out against the background, making it easier to read*/
-    /* text-shadow: 2px 2px black; */
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: var(--secondary-color);
+    background-color: rgb(0, 0, 0, 0.75);
+    width: 50%;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px 5px 5px 5px;
 }
 
 /*This section styles the start button and highscore button*/
-.button-start,
-.button-high-scores {
+.button {
     background-color: var(--primary-color);
     color:var(--secondary-color);
 }

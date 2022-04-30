@@ -1,90 +1,119 @@
-//Timer function activates when start button is clicked
-var startBtnEl = document.getElementById("#start");
-var countEl = document.getElementById("#timer");
-var quizQuestions = document.getElementById("#quiz-questions");
-var score = document.getElementById("#current-score");
-var welcomePage = document.getElementById("#welcome-page");
-var userInitials = document.getElementById("#initials");
-var timerEl = document.getElementById("#timer");
+//timerEl function activates when start button is clicked
+// var startBtnEl = document.getElementById("start");
+var startBtnEl = $("#start");
+var timerEl = $("#timer");
+var answerHolderEl = $("#answer-holder");
+var score = $("#current-score");
+var welcomePage = $("#welcome-page");
+var fakeWelcomePage = $("welcome-page");
+var userInitials = $("#initials");
+var highScores = $("#high-scores");
 
-//function to start page with quiz question section hidden
-function setup() {
-    $("#quizquestions").hide();
-    $(".quiz-end").hide();
+var state = {
+    count: 60,
+    score: 0,
+    index: 0,
 }
-timerEl.textContent("You have " + countEl + " seconds left....");
-var questionArray = ["Commonly used data types DO NOT include:", 
-"The condition in an if/else statement is enclosed with _____", 
-"Arrays in JavaScript can be used to store ______", 
-"String values must be enclosed within ____ when being assigned to variables.", 
-"A very useful tool used during development and debugging for printing content to the debugger is:"];
-startBtnEl.addEventListener("click", function startQuiz() {
-    //Hide index page
+
+var questionArray = [
+    {   question: "The condition in an if/else statement is enclosed with _____",
+        answers: ["parentheses", "curly brackets", "quotes", "square brackets"],
+        correctAnswer: "parentheses"
+    },
+
+    {   question: "Arrays in JavaScript can be used to store _____",
+        answers: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        correctAnswer: "all of the above",
+    },
+
+    {   question: "String values must be enclosed within _____ when being assigned to variables.",
+        answers: ["commas", "curly brackets", "quotes", "parentheses"],
+        correctAnswer: "quotes"
+        
+    },
+
+    {   question: "Commonly used data types DO NOT include:",
+        answers: ["strings", "booleans", "alerts", "numbers"],
+        correctAnswer: "alerts"
+    },
+
+    {
+        question: "A very useful tool used during development and debugging for printing content to the debugger is _____",
+        answers: ["JavaScript", "terminal/bash", "for loops", "console.log"],
+        correctAnswer: "console.log"
+    }
+]
+
+startBtnEl.on("click", function startQuiz() {
+//toggle shown and hidden elements
     welcomePage.hide();
-    //hide high score button
     $("#high-scores").hide();
-    //Display questions
-    quizQuestions.show();
-    //Add count to timer
-    $("#timer").createElement
-    timer.addtextContent = countEl;
-    $(".clock").appendChild();
-    //Start timer
-    setInterval(countdown, 1000);
-    //Call displayQuestion function (loop through the questions and answers)
-    $.each([questionArray], displayQuestion());
-    //Call checkAnswer function
+    $("#quiz-end").hide();
+    answerHolderEl.show();
+    score.show();
     displayQuestion();
-    checkAnswer();
+    countdown()
 });
 
-// var displayQuestion = function displayQuestion() {
-//     //appendChild to HTML
-//     quizQuestions.appendChild(questionArray);
-//     $(quizQuestions).each(function(/*index*/.value){
-//         console.log("quizQuestions${index}: ${this.id}");
-//     });
-//     //add score to page
-//     score.appendChild(score);
-// }
+var displayQuestion = function() {
+    score.text("You have " + state.score + " points");
+    $("#answer-holder").empty();
+    console.log("display question called", state.index);
+    //append to HTML
+    var currentQuestion = questionArray[state.index]
+    $("#question-holder").text(currentQuestion.question);
+    currentQuestion.answers.forEach(function(answer){
+        $("#answer-holder").append('<li>' + answer + '</li>')
 
-var checkAnswer = function checkAnswer() {
-    //For each correct answer, add 5 points and textbox "correct!"
-    //For each wrong answer, remove 10 seconds from timer and add textbox "wrong"
-    //setTimeOut function (flash feedback)
-    if (this.value !== "correct answer") {
-        countEl - 10;
-        setTimeOut(
-            console.log("Incorrect!! -10 seconds!!")
-        );
-    }
-    else if (this.value == correctAnswer) {
-        score + 10;
-        setTimeOut(
-            console.log("Correct! +10 points!")
-        );
-    }
-    //Go to next question in Array 
-    //if current question=questions.length, endQuiz. else, next question 
-//     if (this=questions.length) {
-//         endQuiz();
-//     }
-// }
+    });
 
-/*endQuiz function will clear the timer, clear the html, 
-and take the user to the final score page where they can save their highscore and initials*/
+}
+
+function countdown() {
+    var timer = setInterval(function() {
+    console.log(state.count);
+    timerEl.text(state.count);
+    state.count--;
+    if (state.count < 0) {
+        clearInterval(timer);
+        console.log("end");
+    }
+    } ,1000)
+};
+
+var handleCheckAnswer = function checkAnswer() {
+    state.index++;
+    if (state.index < questionArray.length) {
+        console.log(state.index);
+        console.log("answer checked");
+        displayQuestion();
+    } else if (state.index === questionArray.length) {
+        endQuiz();
+    }
+
+}
+
 function endQuiz() {
-    clearInterval(timer);
+    state.count = 1;
+    $("#high-scores").show();
+    $("#quiz-end").show();
+
+    console.log(state.count);
+    console.log("game over");
 
     //clear HTML
 
 }
 
-//Allow user to add initials to score via textbox with save high score submit button
-//add input tag to high score html page
-//grab textbox content, trim white space (value.trim), 
-var initials = window.prompt("Enter your initials here!");
-if (initials !== "") {
+$("#submit").text("Submit");
+
+$("#answer-holder").on("click", "li", handleCheckAnswer);
+
+
+// //Allow user to add initials to score via textbox with save high score submit button
+// //grab textbox content, trim white space (value.trim), 
+// var initials = window.prompt("Enter your initials here!");
+if (userInitials !== "") {
     //Save scores in local storage JSON.parse
 
     //pull score and initials, make them into objects, push them and set to local storage
@@ -94,15 +123,5 @@ if (initials !== "") {
     
     //send user to href highscores.html
     let link = document.querySelector("#high-score-page");
-    link.click();
+    link.on("click", "button", highScores);
 }
-
-
-function countdown() {
-    countEl--;
-    $("#timer").TextContent = countEl;
-    if (countEl <= 0) {
-        endQuiz();
-        window.alert("TIME'S UP!!");
-    }
-}}
