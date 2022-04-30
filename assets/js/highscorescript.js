@@ -1,10 +1,11 @@
 var highScoreEl = document.querySelector("#high-scores");
+var userInitials = localStorage.getItem('$("#userInitials")');
 //get local scores
-highScoreEl = localStorage.getItem(initials + finalScore);
+highScoreEl = localStorage.getItem(userInitials + $("#finalScore"));
+//append child to the page
+highScoreEl.append($("#high-scores"));
 //sort scores from highest to lowest
 highScoreEl.sort();
-//append child to the page
-highScoreEl.append();
 //optional: button to clear high scores
 // $("#clear-high-scores").click(function(){
 //     var text = $('button/>',

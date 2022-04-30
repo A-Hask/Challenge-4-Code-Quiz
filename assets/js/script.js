@@ -16,12 +16,12 @@ var state = {
 }
 
 var questionArray = [
-    {   question: "The condition in an if/else statement is enclosed with _____",
+    {   question: "The condition in an if/else statement is enclosed with _____.",
         answers: ["parentheses", "curly brackets", "quotes", "square brackets"],
         correctAnswer: "parentheses"
     },
 
-    {   question: "Arrays in JavaScript can be used to store _____",
+    {   question: "Arrays in JavaScript can be used to store _____.",
         answers: ["numbers and strings", "other arrays", "booleans", "all of the above"],
         correctAnswer: "all of the above",
     },
@@ -32,13 +32,13 @@ var questionArray = [
         
     },
 
-    {   question: "Commonly used data types DO NOT include:",
+    {   question: "Commonly used data types DO NOT include: _____.",
         answers: ["strings", "booleans", "alerts", "numbers"],
         correctAnswer: "alerts"
     },
 
     {
-        question: "A very useful tool used during development and debugging for printing content to the debugger is _____",
+        question: "A very useful tool used during development and debugging for printing content to the debugger is _____.",
         answers: ["JavaScript", "terminal/bash", "for loops", "console.log"],
         correctAnswer: "console.log"
     }
@@ -77,51 +77,49 @@ function countdown() {
     if (state.count < 0) {
         clearInterval(timer);
         console.log("end");
+        endQuiz();
     }
     } ,1000)
 };
 
-var handleCheckAnswer = function checkAnswer() {
+var handleLoopQuestions = function loopQuestions() {
     state.index++;
     if (state.index < questionArray.length) {
-        console.log(state.index);
-        console.log("answer checked");
         displayQuestion();
     } else if (state.index === questionArray.length) {
         endQuiz();
     }
+}
 
+var handleCheckAnswers = function checkAnswers() {
+    if ("click", questionArray.correctAnswer) {
+        score== state.score +10;
+    } else {
+        count== state.count - 10;
+    }
 }
 
 function endQuiz() {
     state.count = 1;
-    $("#high-scores").show();
+    $("#high-score-page").show();
     $("#quiz-end").show();
-
+    $("#question-holder").hide();
+    answerHolderEl.hide();
     console.log(state.count);
     console.log("game over");
-
-    //clear HTML
-
+    saveScore();
 }
 
 $("#submit").text("Submit");
 
-$("#answer-holder").on("click", "li", handleCheckAnswer);
+$("#answer-holder").on("click", "li", handleLoopQuestions);
 
-
-// //Allow user to add initials to score via textbox with save high score submit button
-// //grab textbox content, trim white space (value.trim), 
-// var initials = window.prompt("Enter your initials here!");
-if (userInitials !== "") {
+//grab textbox content, trim white space (value.trim), 
+function saveScore() {
+if (userInitials !== "")
     //Save scores in local storage JSON.parse
-
-    //pull score and initials, make them into objects, push them and set to local storage
     localStorage.setItem("finalScore", JSON.stringify(score));
-    console.log(initials, score);
+    //pull score and initials, make them into objects, push them and set to local storage
+    console.log(userInitials.text, score);
     //submit button (code only works if user types something in)
-    
-    //send user to href highscores.html
-    let link = document.querySelector("#high-score-page");
-    link.on("click", "button", highScores);
-}
+    }
