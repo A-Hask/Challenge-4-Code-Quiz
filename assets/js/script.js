@@ -63,8 +63,9 @@ var displayQuestion = function() {
     var currentQuestion = questionArray[state.index]
     $("#question-holder").text(currentQuestion.question);
     currentQuestion.answers.forEach(function(answer){
-        $("#answer-holder").append('<li>' + answer + '</li>')
-
+        let choice = $('<li>' + answer + '</li>');
+        choice.onclick = checkAnswers;
+    $("#answer-holder").append(choice);
     });
 
 }
@@ -83,7 +84,6 @@ function countdown() {
 };
 
 var handleLoopQuestions = function loopQuestions() {
-    state.index++;
     if (state.index < questionArray.length) {
         displayQuestion();
     } else if (state.index === questionArray.length) {
@@ -91,12 +91,15 @@ var handleLoopQuestions = function loopQuestions() {
     }
 }
 
-var handleCheckAnswers = function checkAnswers() {
-    if ("click", questionArray.correctAnswer) {
+function checkAnswers() {
+    console.log("function hit");
+    if ($("this").value === questionArray[state.index].correctAnswer) {
         score== state.score +10;
     } else {
         count== state.count - 10;
     }
+    state.index++;
+    handleLoopQuestions();
 }
 
 function endQuiz() {
