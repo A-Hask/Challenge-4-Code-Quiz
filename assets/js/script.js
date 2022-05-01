@@ -5,7 +5,6 @@ var timerEl = $("#timer");
 var answerHolderEl = $("#answer-holder");
 var score = $("#current-score");
 var welcomePage = $("#welcome-page");
-var fakeWelcomePage = $("welcome-page");
 var userInitials = $("#initials");
 var highScores = $("#high-scores");
 
@@ -44,11 +43,13 @@ var questionArray = [
     }
 ]
 
+$("#quiz-end").hide();
+$("#current-score").hide();
+
 startBtnEl.on("click", function startQuiz() {
-//toggle shown and hidden elements
-    welcomePage.hide();
+    //toggle shown and hidden elements
     $("#high-scores").hide();
-    $("#quiz-end").hide();
+    welcomePage.hide();
     answerHolderEl.show();
     score.show();
     displayQuestion();
@@ -56,7 +57,7 @@ startBtnEl.on("click", function startQuiz() {
 });
 
 var displayQuestion = function() {
-    score.text("You have " + state.score + " points");
+    score.text("You have " + state.score + " points.");
     $("#answer-holder").empty();
     console.log("display question called", state.index);
     //append to HTML
