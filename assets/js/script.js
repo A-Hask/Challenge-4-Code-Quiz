@@ -17,30 +17,30 @@ var state = {
 
 var questionArray = [
     {   question: "The condition in an if/else statement is enclosed with _____.",
-        answers: ["parentheses", "curly brackets", "quotes", "square brackets"],
-        correctAnswer: "parentheses"
+        answers: ["Parentheses", "Curly brackets", "Quotes", "Square brackets"],
+        correctAnswer: "Parentheses"
     },
 
     {   question: "Arrays in JavaScript can be used to store _____.",
-        answers: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-        correctAnswer: "all of the above",
+        answers: ["Numbers and strings", "Other arrays", "Booleans", "All of the above"],
+        correctAnswer: "All of the above",
     },
 
     {   question: "String values must be enclosed within _____ when being assigned to variables.",
-        answers: ["commas", "curly brackets", "quotes", "parentheses"],
-        correctAnswer: "quotes"
+        answers: ["Commas", "Curly brackets", "Quotes", "Parentheses"],
+        correctAnswer: "Quotes"
         
     },
 
     {   question: "Commonly used data types DO NOT include: _____.",
-        answers: ["strings", "booleans", "alerts", "numbers"],
-        correctAnswer: "alerts"
+        answers: ["Strings", "Booleans", "Alerts", "Numbers"],
+        correctAnswer: "Alerts"
     },
 
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is _____.",
-        answers: ["JavaScript", "terminal/bash", "for loops", "console.log"],
-        correctAnswer: "console.log"
+        answers: ["JavaScript", "Terminal/bash", "For loops", "Console.log"],
+        correctAnswer: "Console.log"
     }
 ]
 
