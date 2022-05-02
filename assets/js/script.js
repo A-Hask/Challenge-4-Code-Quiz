@@ -136,7 +136,7 @@ $("#submit").text("Submit");
 submit.on("click", function saveScore() {
     if (userInitials !== "")
     //Save scores in local storage JSON.parse
-    localStorage.setItem("finalScore", JSON.stringify(state.score));    
+    localStorage.setItem("finalScore", JSON.parse(state.score));    
     //pull score and initials, make them into objects, push them and set to local storage
     submit.on("click", localStorage.setItem("initials", userInitials.text));
     console.log(userInitials.text, score);
