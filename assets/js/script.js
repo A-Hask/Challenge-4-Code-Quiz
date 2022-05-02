@@ -113,7 +113,7 @@ function loopQuestions() {
 function checkAnswer() {
   console.log("function hit");
   if ($("this").value === questionArray[state.index].correctAnswer) {
-    state.score == state.score + 10;
+    state.score = state.score + 10;
   } else {
     state.count = state.count - 10;
   }
