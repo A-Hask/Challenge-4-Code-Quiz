@@ -29,5 +29,12 @@ a:active {
 .button-quiz{
     background-color: var(--primary-color);
     color:var(--secondary-color);
+}
 
+.tombstone {
+    border: 2px black;
+    position: fixed;
+    top: 45%;
+    left: 47%;
+    font-size:xx-large;   
 }

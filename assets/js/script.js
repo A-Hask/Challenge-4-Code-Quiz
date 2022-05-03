@@ -76,7 +76,7 @@ function displayQuestion() {
   //append to HTML
   var currentQuestion = questionArray[state.index];
   $("#question-holder").text(currentQuestion.question);
-  currentQuestion.answers.forEach(function (answer) {
+  currentQuestion.answers.forEach(function(answer) {
     $("#answer-holder").append(
       $("<li/>", {
         text: answer,
@@ -118,6 +118,7 @@ function checkAnswer() {
     state.count = state.count - 10;
   }
   state.index++;
+  console.log("answer checked");
   loopQuestions();
 }
 
@@ -128,15 +129,13 @@ function endQuiz() {
   $("#question-holder").hide();
   answerHolderEl.hide();
   console.log("game over");
-  localStorage.setItem("finalScore", state.score);
 }
-
 $("#submit").text("Submit");
 
 submit.on("click", function saveScore() {
     if (userInitials !== "")
     //Save scores in local storage JSON.parse
-    localStorage.setItem("finalScore", JSON.parse(state.score));    
+    localStorage.setItem("finalScore", JSON.parse(state.score)); 
     //pull score and initials, make them into objects, push them and set to local storage
     submit.on("click", localStorage.setItem("initials", userInitials.text));
     console.log(userInitials.text, score);
