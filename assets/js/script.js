@@ -137,7 +137,7 @@ submit.on("click", function saveScore() {
     //Save scores in local storage JSON.parse
     localStorage.setItem("finalScore", JSON.parse(state.score)); 
     //pull score and initials, make them into objects, push them and set to local storage
-    submit.on("click", localStorage.setItem("initials", userInitials.text));
+    submit.on("click", localStorage.setItem("initials", JSON.stringify(userInitials)));
     console.log(userInitials.text, score);
     console.log("initials saved");
     window.location.href= "highscores.html";
